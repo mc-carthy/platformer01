@@ -20,7 +20,7 @@ public class Player : MonoBehaviour {
 
 	private void Start () {
 		rb = GetComponent<Rigidbody2D> ();
-		if (Physics2D.gravity > 0) {
+		if (Physics2D.gravity.y > 0) {
 			InvertGravity ();
 		}
 	}
@@ -59,7 +59,7 @@ public class Player : MonoBehaviour {
 		float xMove = Input.GetAxisRaw ("Horizontal");
 		rb.AddForce (new Vector2 (xMove * moveForce * Time.deltaTime, 0));
 
-		if (Input.GetKeyDown (KeyCode.Space || Input.GetAxisRaw("Vertical") > 0)) {
+		if ((Input.GetKeyDown (KeyCode.Space) || (Input.GetAxisRaw("Vertical") > 0))) {
 			InvertGravity ();
 		}
 	}

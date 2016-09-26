@@ -9,15 +9,16 @@ public class Game : MonoBehaviour {
 	private Text scoreText, gameoverText;
 	[SerializeField]
 	private Camera mainCam;
+	[SerializeField]
 	private Player player;
 	private int score;
 	private float gameTimer;
 	private bool isGameOver;
-	private float camSpeed = 10;
+	private float camSpeed = 1;
 	private float yFloor = -10;
 
 	private void Start () {
-		mainCam = Camera.main;
+		//mainCam = Camera.main;
 		Time.timeScale = 1;
 		player.onHitEnemy += OnHitEnemy;
 		player.onHitSpike += OnGameOver;
@@ -63,6 +64,10 @@ public class Game : MonoBehaviour {
 		if (player.transform.position.y < yFloor) {
 			OnGameOver ();
 		}
+	}
+
+	private void OnHitEnemy () {
+		score += 100;
 	}
 
 	private void OnGameOver () {
